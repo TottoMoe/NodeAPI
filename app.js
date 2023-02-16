@@ -1,8 +1,9 @@
-const express = require("express");
+const express = require("express"); // npm i express
 const app = express();
-const mongoose = require("mongoose");
-const morgan = require("morgan");
-const dotenv = require("dotenv");
+const mongoose = require("mongoose"); // npm i mongoose
+const morgan = require("morgan"); // npm i morgan
+const bodyParser = require('body-parser'); // npm i body-parser
+const dotenv = require("dotenv"); // npm i dotenv
 dotenv.config();
 
 // db
@@ -21,8 +22,8 @@ const postRoutes = require("./routes/post");
 //   next();
 // }
 // app.use(myOwnMiddleware)
-
 app.use(morgan("dev"));
+app.use(bodyParser.json()); 
 app.use("/", postRoutes);
 
 const port = process.env.PORT || 3001;
